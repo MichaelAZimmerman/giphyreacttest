@@ -4,7 +4,7 @@ import useFetch from "../hooks/useFetch";
 
 const Search = () => {
   const [query, setQuery] = useState("");
-  const { data: product, loading, error } = useFetch(`${query}`);
+  const { data, loading, error } = useFetch(query);
 
   return (
     <>
@@ -16,9 +16,10 @@ const Search = () => {
         onChange={(e) => setQuery(e.target.value)}
       />
       <button onClick={useFetch(query)}>click</button>
-      {product.map((response, idx) => (
-        <Display key={idx} response={response} />
-      ))}
+      {data &&
+        data.data.map((response, idx) => (
+          <Display key={idx} response={response} />
+        ))}
     </>
   );
 };
