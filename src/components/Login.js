@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Login = () => {
+const Login = ({ setLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -25,7 +25,12 @@ const Login = () => {
           id="loginBtn"
           onClick={(e) => {
             e.preventDefault();
-            if (username.length < 5 || password.length < 5) {
+            if (username.length > 4) {
+              if (password.length > 4) {
+                setLoggedIn(username);
+              }
+            } else {
+              alert("username and password must be at least 5 char.");
             }
           }}
         >

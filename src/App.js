@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import Login from "./components/Login";
 import Display from "./components/Display";
 import Favs from "./components/Favs";
@@ -13,9 +13,11 @@ import {
 } from "react-router-dom";
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState();
   return (
     <>
       <Router>
+        <header>{loggedIn && <div>{loggedIn} is logged in</div>}</header>
         <nav>
           <NavLink activeClassName="active" to="/login">
             Log-out
@@ -29,9 +31,13 @@ function App() {
         </nav>
         <menu>
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/favs" component={Favs} />
-            <Route path="/search" component={Search} />
+            <Route path="/login">
+              <Login setLoggedIn={setLoggedIn} />
+            </Route>
+            <Route path="/favs" component={Favs} login={loggedIn} />
+            <Route path="/search">
+              <Search />
+            </Route>
             <Route path="*">
               <Redirect to="/login" />
             </Route>
