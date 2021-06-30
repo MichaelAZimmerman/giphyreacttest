@@ -26,6 +26,8 @@ function App() {
           <NavLink activeClassName="active" to="/search">
             Search
           </NavLink>
+        </nav>
+        <menu>
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/favs" component={Favs} />
@@ -34,7 +36,7 @@ function App() {
               <Redirect to="/login" />
             </Route>
           </Switch>
-        </nav>
+        </menu>
       </Router>
     </>
   );

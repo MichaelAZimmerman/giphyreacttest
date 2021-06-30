@@ -2,3 +2,17 @@
   color: white;
   background-color: black;
 }
+body {
+  background-color: darkgrey;
+}
+nav {
+  background-color: rosybrown;
+  display: flex;
+  flex-flow: row wrap;
+  border: 2px solid burlywood;
+}
+.gifBox {
+  background-color: palegoldenrod;
+  border: 2px solid black;
+  flex-basis: 30%;
+}
