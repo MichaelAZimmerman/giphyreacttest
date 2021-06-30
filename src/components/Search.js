@@ -4,7 +4,9 @@ import useFetch from "../hooks/useFetch";
 
 const Search = () => {
   const [newTitle, setNewTitle] = useState("");
-  const { data, loading, error } = useFetch(newTitle);
+
+  const [searchBtn, setSearchBtn] = useState("");
+  const { data, loading, error } = useFetch(searchBtn);
   return (
     <>
       <br />
@@ -14,7 +16,7 @@ const Search = () => {
         value={newTitle}
         onChange={(e) => setNewTitle(e.target.value)}
       />
-      <button onClick={useFetch}>click</button>
+      <button onClick={() => setSearchBtn(newTitle)}>click</button>
       <br />
       {data &&
         data.data.map((response, idx) => (
